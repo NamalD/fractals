@@ -1,0 +1,8 @@
+# Packages
+node_modules
+
+# Bundling
+.parcel-cache
+
+# Builds
+dist
