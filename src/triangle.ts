@@ -4,8 +4,7 @@ export interface Triangle {
   top: Point;
 }
 
-// TODO: Generic left/right/top interface
-export interface TriangleSubdivisions {
+export interface TriangleSubdivision {
   left: Triangle;
   right: Triangle;
   top: Triangle;
@@ -32,7 +31,7 @@ export function equilateralTriangle(length: number, x: number, y: number): Trian
   };
 }
 
-export function subDivide(triangle: Triangle): TriangleSubdivisions {
+export function subdivide(triangle: Triangle): TriangleSubdivision {
   const newLength = length(triangle) / 2;
 
   const leftTriangle = equilateralTriangle(newLength, triangle.left.x, triangle.left.y);
@@ -42,13 +41,20 @@ export function subDivide(triangle: Triangle): TriangleSubdivisions {
   return {
     left: leftTriangle,
     right: rightTriangle,
-    top: topTriangle
+    top: topTriangle,
   };
+}
+
+export function subdivideMany(triangles: Triangle[]): TriangleSubdivision[] {
+  return triangles.map(triangle => subdivide(triangle));
 }
 
 export function length(triangle: Triangle): number {
   return triangle.right.x - triangle.left.x
 }
 
-export const createPoint = (x: number, y: number): Point => ({ x: x, y: y });
-export const mid = (value: number) => value / 2;
+export function toArray(subdivision: TriangleSubdivision): Triangle[] {
+  return [subdivision.left, subdivision.right, subdivision.top];
+}
+
+export const createPoint = (x: number, y: number): Point => ({x: x, y: y});
