@@ -2,10 +2,14 @@
 
 Implementations of various fractal algorithms in p5.js and TypeScript.
 
-## Planned
+## Completed
 
 - Sierpinski triangle
-    - Sierpinski shaders
+
+## Planned
+
+- Animate Sierpinski triangle
+- Chaos games
 - Menger sponge
 - Mandlebrot
 - Attractors
